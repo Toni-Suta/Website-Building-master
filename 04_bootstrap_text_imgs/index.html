@@ -7,7 +7,119 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" />
   </head>
   <body>
-    <div></div>
+    <!-- 
+      Reboot je CSS biblioteka koja je sastavni deo Bootstrapa. Reč je, zapravo, o biblioteci koju su kreirali sami autori Bootstrapa, a koja se zasniva na staroj ideji o resetovanju podrazumevane stilizacije web pregledača i definisanju uniformnih pravila izgleda. Naime, svaki web pregledač osnovnim HTML elementima samostalno dodeljuje određenu stilizaciju. Takva stilizacija se drugačije naziva user agent stylesheet. Upravo zbog postojanja takve stilizacije, kada se ne definiše nikakav CSS, posećeni linkovi imaju plavu boju, a h1 naslovi se ispisuju fontom najveće veličine.
+     -->
+    <!-- 
+      U ovom slucaju se postavlja velicina paragrapha na velicinu h1 heading elementa u bootstrap biblioteci
+      <h1>h1. Heading - 2.5rem</h1>
+      <p class="h1">This is like heading text.</p>
+      -->
+    <!-- 
+        U ovom primjeru zbog elementa <small> moze se stilizirati popratni text h1 elementa da ima malo svjetliju stilizaciju od h1 elementa. 
+          klasa text-muted jos vise izbjeljuje tekst.
+      <h1>
+        This is heading
+        <small class="text-muted">Heading secondary text </small>
+      </h1>
+       -->
+    <!-- 
+        Bootstrap omogucava i povecanje teksta vise nego sto nudi h1 element klasom display-1-2-3...
+        <h1 class="display-1">Display 1</h1>
+        -->
+    <!-- 
+      Ukoliko je potrebno istaknut paragraf dovoljno je postavit klasu lead na paragraf:
+      <p>
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere optio
+      nemo dicta harum, distinctio nesciunt maiores reprehenderit, quia ut
+      perspiciatis quae id quas tempore ducimus sapiente itaque explicabo vero
+      corporis?
+    </p>
+    <p class="lead">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sit magnam rem
+      libero delectus sint quaerat magni modi dolor quia quis illo vel veniam,
+      unde beatae voluptas iusto laborum laudantium natus.
+    </p>
+     -->
+    <!-- 
+      Dekorisanje i formatiranje teksta
+      HTML jezik poseduje nekoliko elemenata koji se mogu koristiti za postizanje specifičnog formatiranja teksta i dodeljivanja posebnog semantičkog značenja takvom tekstu.
+      Bootstrap automatski obezbeđuje odgovarajuću stilizaciju, tako da za njihovo stilizovanje nije potrebno koristiti bilo kakve specifične klase:
+      <p>
+      This is regular paragraph text. <mark>This text is highlighted.</mark>
+    </p>
+    <p><del>This is deleted text.</del></p>
+    <p><s>This text is no longer accurate.</s></p>
+    <p><ins>This text is an addition to the document.</ins></p>
+    <p><u>This is underlined text.</u></p>
+    <p>This is regular paragraph text. <small>This text is smaller.</small></p>
+    <p>
+      This is regular paragraph text.
+      <strong>This text is emphasized using bold.</strong>
+    </p>
+    <p>This is regular paragraph text. <em>This is italicized text.</em></p>
+      -->
+
+    <!-- 
+      Određena specifična formatiranja teksta moguće je postići i korišćenjem ugrađenih Bootstrap klasa:
+      .small – čini tekst manjim od ostatka teksta elementa, baš kao istoimeni HTML element;
+      .mark – markira tekst baš kao i istoimeni HTML element;
+      .text-monospace – postavlja monospace tip fonta na element;
+      .text-lowercase– pretvara sve velika slova elementa u mala;
+      .text-uppercase– pretvara sva mala slova elementa u velika;
+      .text-capitalize– pretvara početna slova svih reči u velika;
+      .text-decoration-none – ukida sve dekoracije sa teksta, tako što vrednost svojstva text-decoration postavlja na none.
+
+      <p>This is regular paragraph text. <span class="mark">This text is highlighted.</span></p>
+      <p>This is regular paragraph text. <span class="small">This text is smaller.</span></p>
+      <p class="text-monospace">This is monospace text.</p>
+      <p class="text-lowercase">This TEXT is transformed using .text-lowercase class.</p>
+      <p class="text-uppercase">This TEXT is transformed using .text-uppercase class.</p>
+      <p class="text-capitalize">This TEXT is transformed using .text-uppercase class.</p>
+      <a class="text-decoration-none" href="#">This link is transformed using .text-decoration-none class</a>
+     -->
+
+    <!-- 
+      Citati
+      HTML jezik poseduje poseban element za markiranje citata, odnosno teksta koji se preuzima iz nekog  posebnog izvora. Reč je o HTML elementu blockquote.Kako bi ovakav element bio stilizovan na pravi način kada se koristi Bootstrap, potrebno ga je dekorisati istoimenom klasom .blockquote. Dodavanje zaglavlja citata postiže se footer elementom, koji je potrebno obeležiti klasom .blockquote-footer. Sam naziv izvora     potrebno je postaviti unutar cite elementa: 
+      <blockquote class="blockquote">
+      <p>
+        Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet,
+        porta in nisl. Proin sagittis nunc ut erat ultrices hendrerit.
+      </p>
+      <footer class="blockquote-footer">
+        Taken from: <cite>Lorem Ipsum</cite>
+      </footer>
+    </blockquote>
+    -->
+    <!-- 
+      Slike
+      Slike unutar HTML dokumenata imaju svoju izvornu veličinu. To znači da se slike podrazumevano ne uvećavaju, ali ni ne smanjuju kada ne mogu da budu smeštene unutar svog okružujućeg elementa ili kompletne stranice. Drugim rečima, slike podrazumevano nemaju responsive
+      Da bi neka slika unutar dokumenta koji koristi Bootstrap postala responsive, dovoljno je iskoristiti klasu .img-fluid.
+
+      <img class="img-fluid" src="image.jpg" alt="this is image">
+
+      Dodavanjem klase .img-fluid postavljaju se vrednosti dva CSS svojstva: max-width na 100% i height na auto. Na taj način će slika pratiti veličinu svog kontejnera, ali neće biti povećavana preko svojih izvornih dimenzija.
+      Bootstrap poseduje i tri klase koje je moguće koristiti za definisanje različitih okvira slika:
+
+      .rounded– blago zaobljeni okviri;
+      .rounded-circle– kružni ili ovalni okviri i
+      .img-thumbnail– okviri u stilu thumbnail slika.
+      THUMBNAIL - Umanjena verzija neke slike, čija uloga je da omogući pregled, najčešće unutar galerija slika; klikom na thumbnail sliku, najčešće se otvara verzija slike pune veličine.
+      <img class="img-fluid rounded" src="image.jpg" alt="image with rounded borders">
+      <img class="img-fluid rounded-circle" src="image.jpg" alt="image with rounded-circle borders">
+      <img class="img-fluid img-thumbnail" src="image.jpg" alt="image with thumbnails borders">
+
+     -->
+    <blockquote class="blockquote">
+      <p>
+        Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet,
+        porta in nisl. Proin sagittis nunc ut erat ultrices hendrerit.
+      </p>
+      <footer class="blockquote-footer">
+        Taken from: <cite>Lorem Ipsum</cite>
+      </footer>
+    </blockquote>
     <script src="js/jquery-3.6.4.slim.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
