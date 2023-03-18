@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Grid</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <!-- 
+    -row (red) se uvijek smjesta unutar container(kontenjera) 
+    -col(kolona) se uvijek smjesta unutar row(reda)
+    -sadrzaj se uvijek smjesta unutar col(kolona)  
+
+    -osnovna klasa col uvijek zauzima prostor kontenjera podjednako (3 kolone trecina kontenjera svaka klasa)
+
+    -razlika izmedu container i container-fluid klase je sto fluid zauzima kompletnu dostupnu sirinu web browser-a
+    -klasa container automatski posjeduje odredene responsive osobine
+
+    -valja napomenut da container ima uvijek 12 col(kolona) i da se uvijek rasporeduje po tim parametrima
+    -col-2 znaci da ce sadrzaj div elementa row1 col1 zauzimat dvije dvanaestine(2/12) od ukupne sirine kontenjera, col-5 (5/12) itd...
+
+    -programer ima mogućnost da prilikom korišćenja Bootstrap kontejnera samostalno odluči do kada će takav kontejner zauzimati 100% širine vidnog polja. Za takvo kontrolisanje kontejnera koriste se klase:
+    sm, md, lg i xl.
+    .col-*   -klasa kojom se definišu osobine      kolona kada je vidno polje uže od 576px
+    .col-sm-*-klasa kojom se definišu osobine kolona kada vidno polje ima širinu 576px ili više
+    .col-md-*-klasa kojom se definišu osobine kolona kada vidno polje ima širinu 768px ili više
+    .col-lg-*-klasa kojom se definišu osobine kolona kada vidno polje ima širinu 992px ili više
+    .col_xl-*-klasa kojom se definišu osobine kolona kada vidno polje ima širinu 1200px ili više
+
+  -->
+    <div class="container">
+      <div class="row">
+        <!-- 
+          U ovom slucaju lg znaci da kada sirina vidnog polja bude veca od 992px neka kolone bude poredane 2/12 5/12 5/12 od sirine kontenjera ako je manja postavi ih u jednu kolone tj 3 kolone postaju jedna kolona
+         -->
+        <div class="col-lg-2">row 1 column 1</div>
+        <div class="col-lg-5">row 1 column 2</div>
+        <div class="col-lg-5">row 1 column 3</div>
+      </div>
+    </div>
+    <div class="row">
+      <!-- 
+      - col-12 na najmanjim ekranima(ispod 576px) svaka kolona zauzimat kompletan red tj kolone ce biti u zasebnim redovima
+      - col-md-6 na medium ekranima(preko 768px) kolona ce zauzimat pola reda
+      - col-lg-4 na velikim ekranima(preko 992px) colona ce zauzimat cetvrtinu jednog reda
+       -->
+      <div class="col-12 col-md-6 col-lg-4">row 2 column 1</div>
+      <div class="col-12 col-md-6 col-lg-4">row 2 column 2</div>
+      <div class="col-12 col-md-6 col-lg-4">row 2 column 3</div>
+    </div>
+  </div>
+
+    <!--
+    <div class="container">
+      <div class="row">
+        <div class="col-8">row 2 column 1</div>
+        <div class="col-4">row 2 column 2</div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-2">row 3 column 1</div>
+        <div class="col-4">row 3 column 2</div>
+        <div class="col-4">row 3 column 3</div>
+        <div class="col-2">row 3 column 4</div>
+      </div>
+    </div>
+    -->
+
+    <script src="js/jquery-3.6.4.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

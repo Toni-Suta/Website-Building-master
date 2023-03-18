@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Grid 2</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <style>
+      .row {
+        border: solid 1px black;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        row 
+    .justify-content-start - poravnanje po levoj ili desnoj ivici grida, koje zavisi od usmerenja teksta; kada je usmerenje teksta ltr, poravnanje se obavlja po levoj osi; za rtl usmerenje teksta, poravnanje je po desnoj osi; usmerenje teksta se može menjati korišćenjem HTML atributa dir
+    .justify-content-end - poravnanje po levoj ili desnoj ivici grida, koje zavisi od usmerenja teksta
+    .justify-content-center - centriranje kolona unutar reda
+    .justify-content-around - centriranje kolona sa jednakim razmakom između svih kolona
+    .justify-content-between - centriranje kolona tako da se prva i poslednja kolona poravnavaju po levoj i desnoj ivici, o ostale kolone se raspoređuju sa jednakim prostorom između
+
+    Bootstrap koristi flex-box za rasporedivanje elemenata(flex-box containers)
+
+    Pomoćna Bootstrap stilizacija, između ostalog, omogućava da se veoma lako definiše veličina bilo kog HTML elementa, jednostavnim postavljanjem unapred pripremljenih klasa
+        .w-25	width: 25%;
+        .w-50	width: 50%;
+        .h-75	height: 75%;
+        .h-100	height: 100%;
+        .vw-100	width: 100vw;
+        .vh-100	height: 100vh;
+
+    Vertikalno centriranje kolona unutar Bootstrapa moguće je postići na dva načina:
+
+    - grupnim centriranjem svih kolona unutar jednog reda, definisanjem odgovarajuće klase na .row elementu;
+    - pojedinačnim centriranjem elemenata, navođenjem odgovarajuće klase na samoj koloni.
+    - Grupno vertikalno poravnanje definisanjem klase na .row elementu se može obaviti korišćenjem klasa:
+
+    .align-items-start	poravnava sve kolone po vrhu reda
+    .align-items-center	vertikalno centrira sve kolone unutar reda
+    .align-items-end	poravnava sve kolone po dnu reda
+    .align-items-stretch	razvlači sve kolone kako bi popunile dostupan vertikalni prostor unutar reda
+
+    Vertikalno poravnanje kolona je moguće postići i na svakoj koloni pojedinačno, korišćenjem klasa:
+
+    .align-self-start	poravnava kolonu po vrhu reda
+    .align-self-end	poravnava kolonu po dnu reda
+    .align-self-center	vertikalno centrira kolonu unutar reda
+    .align-self-stretch	razvlači kolonu kako bi popunila dostupan vertikalni prostor unutar reda    
+
+    Kolone unutar jednog reda podrazumevano se raspoređuju redosledom kojim su definisane unutar HTML koda. Ipak, Bootstrap omogućava da se na njihov vizuelni raspored utiče korišćenjem klasa koje započinju prefiksom order- nakon koga se navodi željeni redni broj:
+    order-*
+
+    order-md-2:
+     uvjetuje da kada sirina vidnog polja postane onolika kolika je na medium ekranima mijenja se redosljed elemenata kako smo vec zadali 
+       
+      <div class="row">
+        <div class="col-4 order-md-2">1st in html</div>
+        <div class="col-4 order-md-1">2nd in html</div>
+        <div class="col-4">3rd in html</div>
+      </div>
+      -->
+
+    <!--
+      <div class="row">
+         
+        Prilikom raspoređivanja elemenata web sajtova korišćenjem Bootstrapa, veoma često se može javiti potreba za pomeranjem nekih kolona udesno, čime je određeni prostor unutar reda moguće preskočiti, odnosno ostaviti prazan. Do ovakve potrebe najčešće dolazi kada kolone ne zauzimaju kompletan prostor unutar jednog reda, a potrebno ih je rasporediti na specifičan način, koji ne podrazumeva njihovo sukcesivno ređanje.
+
+        Bootstrap omogućava da se kolone pomere udesno za određeni broj referentnih kolona, a sve to korišćenjem klasa koje započinju prefiksom 
+        .offset-.
+
+        offset-1 preskace prvu referentnu kolonu unutar 12 kolona kontenjera
+        Jako je bitno da je offset referentna kolona koja se isto tako ubraja u kolone kontenjera i pratit da se ne premasi 12 kolona kontenjera
+
+        Moguce je koristit odrednice za definiranje sirine na ekranima uredaja
+        col-2 offset-xl-1 offset-md-2
+
+    
+        <div class="col-2 offset-1">col 2</div>
+        <div class="col-2 offset-2">col 2</div>
+        <div class="col-2 offset-3">col 2</div>
+      </div>
+      -->
+
+    <!-- 
+        -Bootstrap poseduje skup klasa koje je moguće koristiti kako bi se uticalo na vidljivost elemenata. Bitno je razumeti da takve klase nisu striktno vezane za kolone, što je bio slučaj sa klasama koje su prikazane u dosadašnjem toku lekcije. Reč je, zapravo, o skupu pomoćnih klasa koje je moguće koristiti za kontrolisanje vidljivosti bilo kojeg elementa koji se nalazi unutar Bootstrap grida.
+        -Ovakve klase zapravo omogućavaju kontrolisanje display svojstva, pa upravo zbog toga započinju slovom d.
+        .d-*
+        none
+        inline
+        inline-block
+        block
+        table
+        table-cell
+        table-row
+        flex
+        inline-flex
+       
+        -U ovom slucaju kada je vidno polje extra small ili sm prva kolona se ne prikazuje, a kada se ude u granice sirine medium vidnog polja pa na vise onda se koristi drugi uvjet block
+
+      <div class="row"> 
+        <div class="col-4 d-none d-md-block">1st column</div>
+        <div class="col-4">2nd column</div>
+        <div class="col-4">3rd column</div>
+      </div>
+    -->
+
+    <!-- 
+      -Prilikom kreiranja korisničkog okruženja web sajtova, nekada se može javiti potreba za postizanjem kompleksnijeg rasporeda komponenata, koji se ne može postići korišćenjem do sada prikazanih pristupa.
+
+      -Gnežđenje je pojam koji podrazumeva smeštanje redova i kolona u već kreirane Bootstrap kolone. Drugim rečima, kada se unutar jedne Bootstrap kolone postave novi redovi i kolone, dobija se gnežđenje. Ovakav pristup je najbolje objasniti analizom primera.
+
+      -Bitno je razumeti da se unutar kolona direktno postavljaju redovi sa svojim kolonama, odnosno da se prilikom gnežđenja NE kreiraju dodatni glavni kontejneri.
+     -->
+    <div class="container">
+      <div class="row">
+        <div class="col-8">1st column</div>
+        <div class="col-4">
+          <div class="row">
+            <div class="col-4">A</div>
+            <div class="col-4">B</div>
+            <div class="col-4">C</div>
+          </div>
+          <div class="row">
+            <div class="col-4">E</div>
+            <div class="col-4">F</div>
+            <div class="col-4">G</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">2nd column</div>
+      </div>
+    </div>
+
+    <script src="js/jquery-3.6.4.slim.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
