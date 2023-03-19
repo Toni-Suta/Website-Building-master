@@ -82,6 +82,7 @@
     <!-- 
       Citati
       HTML jezik poseduje poseban element za markiranje citata, odnosno teksta koji se preuzima iz nekog  posebnog izvora. Reč je o HTML elementu blockquote.Kako bi ovakav element bio stilizovan na pravi način kada se koristi Bootstrap, potrebno ga je dekorisati istoimenom klasom .blockquote. Dodavanje zaglavlja citata postiže se footer elementom, koji je potrebno obeležiti klasom .blockquote-footer. Sam naziv izvora     potrebno je postaviti unutar cite elementa: 
+      
       <blockquote class="blockquote">
       <p>
         Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet,
@@ -118,11 +119,41 @@
       .text-center– centriranje teksta (inline i inline-block elemenata);
       .text-right– poravnanje teksta (inline i inline-block elemenata) po desnoj ivici kontejnerskog elementa;
       .text-left– poravnanje teksta (inline i inline-block elemenata) po levoj ivici kontejnerskog elementa.
+
       <p class="text-left">Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet, porta in nisl. Proin sagittis nunc ut erat ultrices hendrerit.</p>
       <p class="text-right">Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet, porta in nisl. Proin sagittis nunc ut erat ultrices hendrerit.</p>
       <p class="text-center">Mauris et mauris ligula. Nullam ante metus, tempor et facilisis laoreet, porta in nisl. Proin sagittis nunc ut erat ultrices hendrerit.</p>
+
+      Poravnanje block elemenata ne može se obaviti korišćenjem upravo prikazanih klasa. Stoga je za poravnanje block elemenata potrebno upotrebiti nešto drugačije klase:
+
+      .mr-auto – za poravnanje po levoj ivici; skraćenica za margin-right: auto;
+      .ml-auto – za poravnanje po desnoj ivici; skraćenica za margin-left: auto;
+      .mx-auto– za centriranje; skraćenica za margin-right: auto; i margin-left: auto;
+
+      Pomoćne Bootstrap klase za definisanje unutrašnjeg i spoljašnjeg razmaka
+      .m*-*-* side-device-value
+      .p*-*-* side-device-value
+
+      Može se videti da se nakon slova m ili p navodi stranica elementa za koju se postavlja unutrašnji ili spoljašnji razmak. Stranice se definišu na sledeći način:
+      t – skraćenica za top (gornja ivica)
+      b – skraćenica za bottom (donja ivica)
+      l – skraćenica za left (leva ivica)
+      r – skraćenica za right (desna ivica)
+      x – skraćenica za x-osu, na kojoj se nalaze leve i desne ivice
+      y – skraćenica za y-osu, na kojoj se nalaze gornje i donje ivice
+
+      .pt-lg-3 – unutrašnji razmak, odnosno padding, na gornjoj ivici, koji će se primenjivati samo na Large i Extra Large displejima; vrednost je postavljena na 3, što će po podrazumevanim postavkama biti 1rem.
+
+      .mr-auto – margina, desna, vrednost auto
+      .ml-auto – margina, leva, vrednost auto
+      .mx-auto – margina, leva i desna, vrednost auto
+
+      <img class="rounded d-block mr-auto" src="image-thumbnail.jpg" alt="block image aligned left">
+      <img class="rounded d-block mx-auto" src="image-thumbnail.jpg" alt="centered block image">
+      <img class="rounded d-block ml-auto" src="image-thumbnail.jpg" alt="block image aligned right">
+      U primeru su kreirana tri img elementa. Svi oni su pretvoreni u block elemente, korišćenjem još jedne Bootstrap pomoćne klase – .d-block. Svaki od img elemenata centriran je definisanjem margina i to korišćenjem upravo ilustrovanih Bootstrap klasa.
      -->
-    </blockquote>
+
     <script src="js/jquery-3.6.4.slim.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
