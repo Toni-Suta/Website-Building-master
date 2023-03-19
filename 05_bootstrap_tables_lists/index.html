@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap Tables and Lists</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+  </head>
+  <body>
+    <!-- 
+    LISTE
+    Liste se unutar HTML dokumenta sa uključenim Bootstrapom ne razlikuju puno od lista sa podrazumevanom stilizacijom web pregledača. Zapravo, jedina razlika je u marginama, zato što Bootstrap ukida gornju marginu lista u potpunosti, a za donju marginu postavlja vrednost 1rem.
+
+    Na obe liste iz primera, sada su dodane klase .list-unstyled. Na taj način su u potpunosti ukinuti karakteri za obeležavanje stavki, kao i bilo koji unutrašnji razmak (padding) za njihovo uvlačenje.
+     
+    <ul class="list-unstyled">
+      <li>
+        nigredo
+        <ul class="list-unstyled">
+          <li>primo</li>
+          <li>secundo</li>
+        </ul>
+      </li>
+      <li>albedo</li>
+      <li>citrinitas</li>
+      <li>rubedo</li>
+    </ul>
+    -->
+
+    <!-- 
+    Bootstrap omogućava i veoma lak način za kreiranje horizontalnih lista. Dovoljno je na glavni okružujući element liste postaviti klasu .list-inline, a na stavke liste klasu .list-inline-item:
+     
+    <ul class="list-inline">
+      <li class="list-inline-item">nigredo</li>
+      <li class="list-inline-item">albedo</li>
+      <li class="list-inline-item">citrinitas</li>
+      <li class="list-inline-item">rubedo</li>
+    </ul>
+    -->
+
+    <!-- 
+    TABELE
+    Bootstrap poseduje veliki broj klasa koje je moguće koristiti za stilizovanje tabela. Efekti takvih klasa će u nastavku biti prikazani na sledećoj HTML tabeli:
+
+    Kako bi se nad tabelom primenila osnovna Bootstrap stilizacija, dovoljno je iskoristiti klasu .table:
+
+    Klasa .table koristi se za postavljanje osnovnih vizuelnih osobina tabela. Ipak, osnovnu Bootstrap stilizaciju tabela moguće je nadograđivati korišćenjem još nekih klasa koje Bootstrap poseduje. To praktično znači da je već viđenu klasu .table moguće kombinovati sa još nekim klasama:
+
+    -.table-striped	za kreiranje tabele sa redovima koji su naizmenično obojeni u sivu i belu boju, kako bi se dobio efekat zebre (pešačkog prelaza)
+    -.table-bordered za dobijanje tabele sa svim okvirima
+    -.table-hover za dobijanje tabele kod koje se prelaskom strelice miša preko redova stvara hover efekat
+    -.table-dark za dobijanje tabele tamne boje pozadine
+    -.table-borderless za dobijanje tabele bez ikakvih okvira
+    -.table-sm	za dobijanje male (small) tabele, tako što se unutrašnji razmak smanjuje za 50%
+
+    Bitno je razumeti da se prikazane klase postavljaju na table elementu i to pored osnovne Bootstrap klase za stilizovanje tabela - .table:
+    <table class="table table-striped">
+        ...
+    </table>
+
+    Upravo prikazane klase za stilizovanje kompletnih tabela moguće je i kombinovati. Tako je malu, tamnu tabelu sa hover efektom moguće dobiti na sledeći način:
+
+    <table class="table table-sm table-hover table-dark ">
+        ...
+    </table>
+
+    Na table elementu sada su, pored klase .table, postavljene i tri dodatne klase: .table-sm za kreiranje nešto kompaktnije tabele, .table-hover za dobijanje hover efekta i .table-dark za kreiranje tamne tabele.
+
+    Pored takvih klasa, Bootstrap poseduje i nekoliko klasa koje je moguće koristiti za stilizaciju pojedinačnih elemenata tabela.
+
+    Tako je naslovni red tabele samostalno moguće obojiti u tamnosivu ili svetlosivu boju korišćenjem sledećih klasa:
+
+    .thead-light – svetlosivi naslovni red
+    .thead-dark – tamnosivi naslovni red
+
+    Ovakve klase očekivano se postavljaju na thead elementu. Primer definisanja svetlosivog zaglavlja izgleda ovako:
+
+    <table class="table">
+        <thead class="thead-light">
+            ...
+        </thead>
+    ...
+    </table>
+
+    Definisanje tamnosivog zaglavlja tabele može se postići na sledeći način:
+
+    <table class="table">
+        <thead class="thead-dark">
+            ...
+        </thead>
+    ...
+    </table>
+
+    Klase koje je moguće koristiti za bojenje teksta su:
+
+    .text-primary
+    .text-secondary
+    .text-success
+    .text-danger
+    .text-warning
+    .text-info
+    .text-light
+    .text-dark
+
+    Kontekstualne Bootstrap boje se mogu postaviti za pozadinu bilo kog elementa, korišćenjem sledećih klasa:
+
+    .bg-primary
+    .bg-secondary
+    .bg-success
+    .bg-danger
+    .bg-warning
+    .bg-info
+    .bg-light
+    .bg-dark
+    .bg-white
+    .bg-transparent
+
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Character</th>
+          <th scope="col">Movie</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Trelkovsky</td>
+          <td>Le locataire</td>
+          <td>1976</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Rosemary Woodhouse</td>
+          <td>Rosemary's Baby</td>
+          <td>1968</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Paulina Escobar</td>
+          <td>Death and the Maiden</td>
+          <td>1994</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>David Kentley</td>
+          <td>Rope</td>
+          <td>1948</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>Margot Wendice</td>
+          <td>Dial M for Murder</td>
+          <td>1954</td>
+        </tr>
+      </tbody>
+    </table>
+
+    RESPONSIVE TABELE
+    Kada se kreira tabela koja poseduje veliki broj kolona, odnosno tabela sa dosta sadržaja koji nije lako efikasno prelomiti, tabela izlazi iz okvira vidnog polja.
+
+    Ukoliko se ovakva tabela prikaže na uređajima sa vidnim poljem užim od 1000px, može se videti da deo tabele ostaje odsečen. Što je vidno polje uže, sve veći deo tabele se ne može videti jer izlazi iz okvira stranice. Kako bi se rešio ovakav problem, tabelu je neophodno smestiti unutar jednog okružujućeg elementa (nabolje div-a), na koji je potrebno postaviti klasu .table-responsive:
+
+    <div class="table-responsive">
+        <table class="table">
+            ...
+        </table>
+     </div>
+
+    Na ovaj način, u slučajevima kada tabela ne može da bude smeštana unutar vidnog polja, ispod tabele se pojavljuje traka za skrolovanje, koja korisnicima omogućava da vide deo tabele koji izlazi iz okvira stranice ili elementa.
+
+    
+     -->
+
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+            <th>Heading</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cell 1 content</td>
+            <td>Cell 2 content</td>
+            <td>Cell 3 content</td>
+            <td>Cell 4 content</td>
+            <td>Cell 5 content</td>
+            <td>Cell 6 content</td>
+            <td>Cell 7 content</td>
+            <td>Cell 8 content</td>
+            <td>Cell 9 content</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script src="../js/jquery-3.6.4.slim.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
