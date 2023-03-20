@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <title>Bootstrap Buttons and Forms</title>
+    <style>
+      body {
+        background-color: rgb(158, 197, 197);
+      }
+
+      #form-container {
+        width: 640px;
+        margin: 0 auto;
+      }
+
+      /*
+        input[type=text],
+        input[type=email],
+        select,
+        textarea {
+            width: 100%;
+        }
+
+        form>div {
+            margin: 16px 0 16px 0;
+        }
+
+        form>div>label {
+            font-weight: bold;
+        }
+        */
+    </style>
+  </head>
+
+  <body>
+    <!-- 
+    Osnovni skup dugmića
+
+    Dodavanjem klase .btn resetuje se podrazumevana vizuelna reprezentacija dugmića. Dugme sa .btn klasom ima providnu pozadinu i providne okvire, pa se zbog toga button elementi veoma retko koriste samo sa ovom klasom. Pored osnovne .btn klase, Bootstrap poseduje i veliki skup drugih klasa koje su namenjene stilizovanju dugmića:
+    Pored klase .btn, svakom dugmetu je sada dodeljena po još jedna klasa:
+
+    <button type="button" class="btn btn-primary">Primary</button>
+    <button type="button" class="btn btn-secondary">Secondary</button>
+    <button type="button" class="btn btn-success">Success</button>
+    <button type="button" class="btn btn-danger">Danger</button>
+    <button type="button" class="btn btn-warning">Warning</button>
+    <button type="button" class="btn btn-info">Info</button>
+    <button type="button" class="btn btn-light">Light</button>
+    <button type="button" class="btn btn-dark">Dark</button>
+    <button type="button" class="btn btn-link">Link</button>
+     -->
+
+    <!-- 
+    <button type="button">Default</button>
+    <button type="button" class="btn">Default Bootstrap</button>
+    <button type="button" class="btn btn-primary">Click me</button>
+    -->
+
+    <!-- 
+    Dugmići bez ispune
+
+    Pored upravo prikazanih klasa za stilizovanje dugmića, Bootstrap poseduje i skup klasa kojima se dobijaju dugmići bez ispune, odnosno dugmići čija je vizuelna komponenta sačinjena samo iz okvira: 
+
+    <button type="button" class="btn btn-outline-primary">Primary</button>
+    <button type="button" class="btn btn-outline-secondary">Secondary</button>
+    <button type="button" class="btn btn-outline-success">Success</button>
+    <button type="button" class="btn btn-outline-danger">Danger</button>
+    <button type="button" class="btn btn-outline-warning">Warning</button>
+    <button type="button" class="btn btn-outline-info">Info</button>
+    <button type="button" class="btn btn-outline-light">Light</button>
+    <button type="button" class="btn btn-outline-dark">Dark</button>
+     -->
+
+    <!-- 
+    Veličina dugmića
+
+    Bootstrap omogućava kreiranje dugmića u tri veličine. Dugmići iz prethodnih primera imali su podrazumevanu veličinu. Kako bi se kreirali nešto manji dugmići, koristi se klasa .btn-sm. Za nešto veće dugmiće, koristi se klasa .btn-lg:    
+
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+    <button type="button" class="btn btn-primary">Default size</button>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+     -->
+
+    <!-- 
+    Onemogućeno dugme
+
+    HTML jezik poseduje ugrađeni mehanizam za onemogućavanje button elemenata. Pod pojmom onemogućavanja podrazumeva se ukidanje osnovne namene dugmeta – da se ono može pritisnuti.
+    Disabled button 
+    Onemogućavanje dugmića se veoma često koristi kada je potrebno sprečiti korisnika da izvrši neku akciju ukoliko je prethodno nešto propustio da uradi. Na primer, unutar formi, dugme za prosleđivanje forme se često onemogućava dok uneti podaci ne budu validni.
+ 
+    <button type="button" disabled>Disabled button</button>
+
+    Kada je reč o dugmićima koji su stilizovani Bootstrapom, o stilizaciji onemogućenih dugmića brine sam Bootstrap. Tako nije neophodno dodavati nikakve posebne klase na onemogućeno dugme:
+
+    <button type="button" class="btn btn-primary">Regular Primary Button</button>
+    <button type="button" class="btn btn-primary" disabled>Disabled Primary Button</button>
+     -->
+
+    <!-- 
+    Kada se dugme kreira korišćenjem a elementa, procedura onemogućavanja je nešto drugačija. Naime, a elementi se ne mogu onemogućiti dodavanjem disabled atributa. Drugim rečima, HTML jezik ne poseduje ugrađeni mehanizam za onemogućavanje linkova. Ipak, Bootstrap pokušava da to na neki način prevaziđe, pa upravo zbog toga postoji klasa .disabled. Ovu klasu je moguće postaviti na a element koji je potrebno onemogućiti, a Bootstrap će u pozadini, korišćenjem CSS svojstva pointer-events(CSS svojstvo pointer-events koristi da definiše da li će HTML element moći da bude izvor događaja pokazivača miša; ukoliko se vrednost ovog svojstva postavi na none, element sa ovakvim svojstvom neće moći da prihvati klik događaj.)
+    , obaviti onemogućavanje linka:
+
+    <a href="#" class="btn btn-primary disabled" tabindex="-1" role="button" aria-disabled="true">Primary Disabled link</a>
+     -->
+
+    <!-- 
+    Block dugme
+    
+    button elementi su podrazumevani inline-block elementi, što praktično znači da mogu deliti isti red sa ostalim inline i inline-block elementima. Ipak, u nekim situacijama se može javiti potreba za kreiranjem dugmeta koje je block element, pa samim tim zauzima kompletnu dostupnu širinu unutar svog roditelja. To se može postići korišćenjem klase .btn-block:
+
+    <button type="button" class="btn btn-primary btn-block">Primary Block Button</button>
+      -->
+
+    <!-- 
+        Unutar form elementa mogu se smestiti različiti HTML elementi:
+
+        input element sa različitim vrednostima type atributa
+        text
+        password
+        email
+        radio
+        checkbox
+        submit
+        file
+
+        textarea
+        button
+        select
+        fieldset
+        label
+
+        Bitno je primetiti da je forma kreirana korišćenjem form elementa, unutar koga su smeštene različite komponente forme. Prikazana forma se sastoji iz sledećeg:
+
+        grupe input elemenata tipa radio za odabir pola (Mr i Mrs)
+        input elementa tipa text za unos imena
+        input elementa tipa email za unos email adrese
+        input elementa tipa text za unos adrese
+        select elementa za odabir države
+        textarea elementa za definisanje komentara
+        input elementa tipa submit za prosleđivanje forme    
+        
+        Stilizovanje elemenata za unos teksta korišćenjem Bootstrapa
+
+        Svi elementi za prikupljanje tekstualnih podataka unutar Bootstrap forme obeležavaju se korišćenjem klase .form-control. To praktično znači da je, na primeru prethodne forme, sledeće elemente potrebno dekorisati klasom .form-control:
+
+        input elemente tipa text i email
+        select element
+        textarea element
+
+        Bootstrap omogućava kontrolisanje veličine elemenata koji se dekorišu klasom .form-control. Za kontrolisanje veličine je moguće koristiti sledeće klase:
+
+        .form-control-lg
+        .form-control-sm
+
+        Stilizovanje radio i checkbox elemenata korišćenjem Bootstrapa
+
+        Procedura stilizovanja input elemenata tipa radio i checkbox nešto je drugačija. Oni se ne obeležavaju klasom .form-control, već klasom .form-check-input. Pri tome se pripadajući label elementi dekorišu korišćenjem klase .form-check-label. Na kraju, na okružujući element kojim se grupiše label i checkbox ili radio element, potrebno je postaviti klasu .form-check:
+
+        Ukoliko je više radio elemenata potrebno rasporediti horizontalno, odnosno u jednom redu, na njihove kontejnerske elemente je pored klase .form-check potrebno dodati i klasu .form-check-inline
+
+        <div class="form-check form-check-inline">
+        <input class="form-check-input" name="gender" type="radio" id="male" value="male" checked="checked">
+        <label class="form-check-label" for="male">Mr</label>
+        </div>
+
+        Stilizovanje elemenata za prosleđivanje forme
+
+        Za prosleđivanje podataka forme mogu se koristiti dva elementa:
+
+        input element tipa submit
+        button element tipa submit
+
+        <input class="btn btn-primary" type="submit" value="Send">
+        <button class="btn btn-primary" type="submit">Send</button>
+       
+
+       <div id="form-container">
+       <form>
+        <div class="form-group">
+            <label>Gender:</label>
+            <div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="gender" type="radio" id="male" value="male" checked="checked">
+                <label class="form-check-label" for="male">Mr</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" name="gender" type="radio" id="female" value="female">
+                <label class="form-check-label" for="female">Mrs</label>
+            </div>
+        </div>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input class="form-control" type="text" id="name" name="name">
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input class="form-control" type="email" id="email" name="email">
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address: </label>
+            <input class="form-control" type="text" id="address" name="address">
+        </div>
+
+        <div class="form-group">
+            <label for="country">Country: </label>
+            <select class="form-control" name="country" id="country">
+                <option value="select"  selected="selected">Select country:</option>
+                <option value="Serbia">Serbia</option>
+                <option value="Romania">Romania</option>
+                <option value="Ukraine">Ukraine</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="comment">Comment: </label>
+            <textarea class="form-control" name="comment" id="comment">Lorem ipsum dolor sit amet.</textarea>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="newsletter" value="yes" id="newsletter">
+            <label class="form-check-label" for="newsletter">I would like to receive newsletter.</label>
+        </div> 
+
+        <button class="btn btn-primary" type="submit">Send</button>
+    </form>
+</div>
+
+    -->
+
+    <!-- 
+    Linijske forme
+
+    Linijske (inline) forme su one kod kojih su elementi raspoređeni u jednoj liniji. Ovakav raspored ima smisla kod formi sa malo elemenata (na primer, kod formi za prijavljivanje na newsletter). Takva forma se može kreirati na sledeći način:
+
+    <form class="form-inline">
+    <input class="form-control m-2" type="text" id="name" name="name" placeholder="name">
+    <input class="form-control m-2" type="email" id="email" name="email" placeholder="email">
+    <button class="btn btn-primary" type="submit">Subscribe</button>
+    </form> 
+
+    Na form elementu postavljena je klasa .form-inline i na taj način je forma pretvorena u linijsku. Takođe, elementi su smešteni direktno unutar forme i uklonjeni su label elementi za njihovo obeležavanje. Umesto label elemenata, elementi su označeni korišćenjem teksta koji je definisan atributom placeholder. Na kraju, kako bi se dobio određeni prored, na input elemente su postavljene klase .m-2. Reč je o pomoćnim klasama Bootstrapa o kojima je već bilo reči u jednoj od prethodnih lekcija. Korišćenjem klase iz primera (.m-2) definisane su margine elemenata za sve četiri ivice.
+     -->
+
+    <!-- 
+    Forme sa složenim rasporedom elemenata
+    
+    Pod pojmom formi sa složenim rasporedom elemenata podrazumevaju se forme kod kojih se kombinuje horizontalna i vertikalna struktura. Za postizanje takvog rasporeda, moguće je koristiti već prikazane pristupe za kreiranje layouta Bootstrap grida.
+
+    Prilikom kreiranja redova i kolona unutar forme, ne definiše se koreni kontejnerski element, već se pristupa direktnom kreiranju redova i kolona. Redove je moguće kreirati korišćenjem standardne klase .row, ali i klase .form-row, koja je posebno namenjena kreiranju redova unutar formi. Korišćenje klase .form-row za efekat ima nešto kompaktnije redove, sa manje prostora između njih.
+
+    Kolone se unutar redova formi kreiraju korišćenjem standardnih Bootstrap klasa koje započinju prefiksom .col-. Pri tome je moguće koristiti i odrednice za različite uređaje, kako bi se postigao željeni responsive efekat.
+      -->
+
+    <div id="form-container">
+      <form>
+        <div class="form-row">
+          <div class="col-lg-2 col-sm-4">
+            <div class="form-group">
+              <label>Gender:</label>
+              <div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    name="gender"
+                    type="radio"
+                    id="male"
+                    value="male"
+                    checked="checked"
+                  />
+                  <label class="form-check-label" for="male">Mr</label>
+                </div>
+                <div class="form-check form-check-inline">
+                  <input
+                    class="form-check-input"
+                    name="gender"
+                    type="radio"
+                    id="female"
+                    value="female"
+                  />
+                  <label class="form-check-label" for="female">Mrs</label>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-sm-8">
+            <div class="form-group">
+              <label for="name">Name: </label>
+              <input class="form-control" type="text" id="name" name="name" />
+            </div>
+          </div>
+          <div class="col-lg-5 col-sm-12">
+            <div class="form-group">
+              <label for="email">Email: </label>
+              <input
+                class="form-control"
+                type="email"
+                id="email"
+                name="email"
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <script src="../js/jquery-3.6.4.slim.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
