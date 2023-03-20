@@ -9,11 +9,11 @@
   <body>
     <button type="button">Standard Button</button>
     <button type="button" class="btn btn-primary">Bootstrap Button</button>
-    <script src="js/jquery-3.6.4.slim.min.js">
-      // jquery file se integrira prije bootstrap file-a jer bootstrap zahtjeva jquery file
-      // Neophodno je navesti doctype deklaraciju html5 jezika
-      // Isto tako potreban je meta name viewport tako da se vrijednost vidnog polja postovlja na vrijednost softverske css sirine uredaja i da inicijalno uvecanje ima vrijednost 1 i da je potrebno da nema nikakvog uvecavanja prikaza (Neophodno za responsive web kreiranje)
-        /*
+    <!--  
+       jquery file se integrira prije bootstrap file-a jer bootstrap zahtjeva jquery file
+       Neophodno je navesti doctype deklaraciju html5 jezika
+       Isto tako potreban je meta name viewport tako da se vrijednost vidnog polja postovlja na vrijednost softverske css sirine uredaja i da inicijalno uvecanje ima vrijednost 1 i da je potrebno da nema nikakvog uvecavanja prikaza (Neophodno za responsive web kreiranje)
+        
         BUTTON:
         Korišćenjem dve prikazane linije HTML koda, kreiraju se dva button elementa. Prvi je klasični button element, bez ikakvih dodatnih atributa (osim standardnog atributa type, kojim se definiše tip dugmeta). Ipak, na drugom button elementu postavljen je atribut class, kojim su ovom elementu dodeljene dve klase. Reč je o klasama koje postoje unutar Bootstrapa, a kojima se kreira jedno Bootstrap dugme. Inače, ovo je osnovni princip korišćenja Bootstrapa – na elemente se postavljaju specifične klase, čime se dobija posebna vizuelna reprezentacija ili ponašanje.
 
@@ -24,8 +24,9 @@
         https://jquery.com/download/
 
         Baš kao i Bootstrap, i jQuery postoji u nekoliko različitih verzija. Osnovna podela je na punu i slim varijantu. Za korišćenje Bootstrapa, dovoljna je slim varijanta, iz koje su isključeni moduli za rad sa Ajaxom i efektima.
-        */
-    </script>
+        
+        -->
+    <script src="js/jquery-3.6.4.slim.min.js"></script>
     <script src="js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
