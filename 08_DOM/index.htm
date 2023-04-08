@@ -4,24 +4,189 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document Object Model</title>
+
+    <style>
+      /* 8.1 
+      .blue-text {
+        color: blue;
+      }
+      */
+    </style>
   </head>
   <body>
     <!-- 
         DOM je skraćenica koja označava pojam Document Object Model. 
         DOM je objektna reprezentacija jednog HTML dokumenta.
      -->
-
+    <!-- 1 Selecting element by id
     <div id="div-1">
       <p id="p-1">text 1</p>
       <p id="p-2">text 2</p>
       <p>text 3</p>
     </div>
+     -->
+
+    <!-- 2 selecting element by class
+
+    <p id="my-class">Text 1</p>
+    <p class="my-class">Text 2</p>
+    <p class="my-class some-other-class">Text 3</p>
+    <p>Text 4</p>
+    <p>Text 5</p>
+    <p class="your-class">Text 6</p>
+      -->
+
+    <!-- 3 selecting element by tag name
+         4 selecting element by specific id selector name 
+    <ul>
+      <li>Item 1</li>
+      <li id="my-id">Item 2</li>
+      <li>Item 3</li>
+    </ul>
+    -->
+
+    <!-- 5 Changing content in this case text in paragraph with innerHTML 
+    <p id="the-paragraph">text-1</p>
+    -->
+
+    <!-- 6 
+    <p id="the-paragraph" class="my-class">text-1</p>
+      -->
+
+    <!-- 7 with setAttribute selector we can change attributes of elements like this from text to button for exp.
+    <input
+      type="text"
+      name="firstName"
+      id="first-name"
+      value="I want to be button!"
+    />
+    -->
+
+    <!--
+       8 is this example color is changed to blue for paragraph element (important: when style is changed with built-in approaches to handle styling it is inline style change)
+
+        8.1 is this case with classlist.add blue-text class style is added to the-paragraph p element so text becomes blue bcs style of that class is color:blue 
+      var paragraph = document.getElementById("the-paragraph");
+      paragraph.classList.add("blue-text");
+
+      8.2 to remove class from element instead of add write remove:
+      paragraph.classList.remove("my-class");
+    
+    <p id="the-paragraph" class="my-class">text-1</p>
+    -->
+
+    <!-- 9 / 9.1 
+    <p id="the-paragraph" class="my-class">Non-dynamic paragraph</p>
+    -->
+
+    <!-- 10 -->
+    <ul id="myList">
+      <li>Item 1</li>
+      <li>Item 2</li>
+      <li>Item 3</li>
+    </ul>
     <script>
-      // document.title = "Hello World!";
+      /* 1 Selecting element by id
+       document.title = "Hello World!";
 
-      var paragraph = document.getElementById("p-2");
+       var paragraph = document.getElementById("p-2");
 
-      alert(paragraph.innerHTML);
+       alert(paragraph.innerHTML);
+
+      U upravo prikazanom primeru, prvi put je iskorišćeno jedno specijalno svojstvo – innerHTML. Naime, svi objekti unutar DOM strukture kojima se predstavljaju različiti HTML elementi poseduju svojstvo innerHTML. Reč je o svojstvu kojim je moguće pročitati ili postaviti tekst nekog HTML elementa.
+      */
+
+      /* 2 selecting element by class
+      var paragraphs = document.getElementsByClassName("my-class");
+      for (let i = 0; i < paragraphs.length; i++) {
+        console.log(paragraphs[i].innerHTML); // text2, text3
+      }
+      console.log(paragraphs.length); // 2
+      */
+
+      /* 3 selecting element by tag name 
+      var items = document.getElementsByTagName("li");
+      console.log(items.length);
+      */
+
+      /* 4 selecting element by specific id selector name
+        if we write	var items = document.querySelector("li");
+        it will select only 1st item from the list but if we write var items = document.querySelectorall("li"); then it will select all items with li tag
+      
+      var items = document.querySelector("#my-id");
+      console.log(items.innerHTML);
+      */
+
+      /* 5 Changing content in this case text in paragraph with innerHTML 
+      var paragraph = document.getElementById("the-paragraph");
+      console.log("Original text content was " + paragraph.innerHTML);
+
+      paragraph.innerHTML = "New text set using innerHTML property!";
+      */
+
+      /* 6  getting element by id and class name
+      var paragraph = document.getElementById("the-paragraph");
+      console.log("id: " + paragraph.id);
+      console.log("Class: " + paragraph.className);
+      */
+
+      /* 7 with setAttribute selector we can change attributes of elements like this from text to button for exp. 
+      var input = document.getElementById("first-name");
+      input.setAttribute("type", "button");
+      */
+
+      /* 8 is this example color is changed to blue for paragraph element (important: when style is changed with built-in approaches to handle styling it is inline style change)
+
+      var paragraph = document.getElementById("the-paragraph");
+      paragraph.style.color = "blue";
+       */
+
+      /* 8.1 is this case with classlist.add blue-text class style is added to the-paragraph p element so text becomes blue bcs style of that class is color:blue 
+      var paragraph = document.getElementById("the-paragraph");
+      paragraph.classList.add("blue-text");
+      */
+
+      /* 8.2 to remove class from element instead of add write remove 
+      
+      paragraph.classList.remove("my-class");
+      */
+
+      /* 9 
+      1st new p was created with createElement
+      2nd content is created with createTextNode()
+      3rd content is added to p element with append.Child(newContent)
+      4th newly created p element is added to body element with document.body.... 
+      This p element is added to the end of body structure
+      
+      var newParagraph = document.createElement("p");
+      var newContent = document.createTextNode(
+        "This is dynamically generated paragraph"
+      );
+      newParagraph.appendChild(newContent);
+
+      document.body.appendChild(newParagraph);
+      */
+
+      /* 9.1 INSERT ELEMENT BEFORE 
+         1st new variable is created oldParagraph which takes in id of p element(the-paragraph)
+         2nd insertBefore is used to determine which paragraph goes before other is this case newly created dynamic goes on top of non-dynamic
+      
+      var oldParagraph = document.getElementById("the-paragraph");
+      document.body.insertBefore(newParagraph, oldParagraph);
+
+        9.2 REPLACE ELEMENT
+          1st value is which element needs to be replaced
+          2nd value is which element is replacing existing element  
+        document.body.replaceChild(newParagraph, oldParagraph);
+      */
+
+      /* 10 
+         1st reach element with id by getElById()
+         2nd add var to that line bcs of returned value
+         3rd to added var add removeChild and specify which content to remove
+      */
+      var list = document.getElementById("myList");
+      list.removeChild(list.children[1]);
     </script>
   </body>
 </html>
