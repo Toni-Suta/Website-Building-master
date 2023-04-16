@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Events</title>
+  </head>
+  <body>
+    <button id="the-button">Click me</button>
+
+    <script>
+      var button = document.getElementById("the-button");
+      /*
+      button.onclick = function () {
+        alert("Hello there!");
+      };
+      
+
+      // onClick is property so it can have only one value so in this case only 1st message will be displayed
+      button.onclick = displayMessage;
+      button.onclick = displayAnotherMessage;
+
+      function displayMessage() {
+        alert("Hello there!");
+      }
+
+      function displayMessage() {
+        alert("Hello again!");
+      }
+      */
+
+      button.addEventListener("click", displayMessage);
+      //button.addEventListener("click", displayAnotherMessage);
+
+      // removeEventListener method removes event handeler and when button is clicked it shows message only once after that event is removed and it will not produce message anymore  (function will not activate anymore)
+      function displayMessage() {
+        alert("Hello there!");
+        button.removeEventListener("click", displayMessage);
+      }
+
+      /*function displayAnotherMessage() {
+        alert("Hello again!");
+      }
+      */
+    </script>
+  </body>
+</html>
