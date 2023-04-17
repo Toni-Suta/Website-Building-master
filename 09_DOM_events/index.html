@@ -4,17 +4,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM Events</title>
+    <style>
+      /* Mouse event example */
+      #my-div {
+        height: 300px;
+        background-color: blueviolet;
+        font-family: sans-serif;
+        font-size: 28px;
+        text-align: center;
+        color: white;
+        line-height: 300px;
+      }
+    </style>
   </head>
-  <body>
-    <button id="the-button">Click me</button>
 
+  <body>
+    <!-- Example when button element is above script 
+      <button id="the-button">Click me</button> -->
+
+    <!-- Mouse event example 
+    <div id="my-div">Hello I am div. You can click me!</div>
+    -->
+
+    <!-- Target property example 
+    <ul>
+      <li>Items 1</li>
+      <li>Items 2</li>
+      <li>Items 3</li>
+    </ul>
+    -->
     <script>
+      /* 1st video
       var button = document.getElementById("the-button");
-      /*
+
       button.onclick = function () {
         alert("Hello there!");
       };
-      
+
 
       // onClick is property so it can have only one value so in this case only 1st message will be displayed
       button.onclick = displayMessage;
@@ -27,7 +53,7 @@
       function displayMessage() {
         alert("Hello again!");
       }
-      */
+
 
       button.addEventListener("click", displayMessage);
       //button.addEventListener("click", displayAnotherMessage);
@@ -38,10 +64,108 @@
         button.removeEventListener("click", displayMessage);
       }
 
-      /*function displayAnotherMessage() {
+      function displayAnotherMessage() {
         alert("Hello again!");
       }
       */
+
+      /* 2nd video
+
+
+      When button element is under script we need to use load event on variable of the-button
+      Now bcs of the load event the-button will be called after loading of all resources of the page and after it generates object structure
+
+      window.addEventListener("DOMContentLoaded", function () {}
+      - when all DOM content is loaded then its ready to proceed
+
+      window.addEventListener("readyStateChange", function () {
+        if(document.readyState === "interactive") {
+          var button = document.getElementById("the-button");
+          button.addEventListener("click", displayMessage);
+          - when we want to be 100% sure that DOM is loaded
+        }
+
+        window.addEventListener("readyStateChange", function () {
+        if(document.readyState === "complete") {
+          var button = document.getElementById("the-button");
+          button.addEventListener("click", displayMessage);
+      } - when we want to be 100% sure that DOM is loaded with all other page resources
+
+      window.addEventListener("load", function () {
+        var button = document.getElementById("the-button");
+
+        button.addEventListener("click", displayMessage);
+      });
+
+      function displayMessage() {
+        alert("Hello there!");
+      }
+      */
+
+      /* Mouse event examples
+      var div = document.getElementById("my-div");
+      */
+
+      /*
+      div.addEventListener("click", function () {
+        alert("You have clicked on div!");
+      }); - when my-div is clicked on alert text pops
+      */
+
+      /* When mouse hovers over div mouseenter event is called when it leaves mouseleave is called so div text is changing
+      div.addEventListener("mouseenter", function () {
+        div.innerHTML = "The mouse pointer entered the div area!";
+      });
+
+      div.addEventListener("mouseleave", function () {
+        div.innerHTML = "The mouse pointer left the div area!";
+      });
+
+
+      Here is shown how many times is this event emitted. While mouse is moved around div element counter is going up
+      let eventCounter = 0;
+
+      div.addEventListener("mousemove", function () {
+        div.innerHTML =
+          "The mouse pointer is moving in div area!" + eventCounter;
+        eventCounter++;
+      });
+      */
+
+      /* Object Event - takes one parameter and it's holding information about that event (e-event)
+      - keydown event gives us info of which keyboard button is pressed with key property
+
+      document.addEventListener("keydown", function (e) {
+        console.log(e.key);
+      });
+      */
+
+      /* all events have property target and it targets element that is clicked in this case and shows it in console
+      document.addEventListener("click", function (e) {
+        console.log(e.target);
+      });
+      */
+
+      /* Target property example
+        TARGET OWNS EVERY OBJECT OF ANY OBJECT EVENT
+        1st - get element by its tag name of list "li"
+        2nd - make for loop to loop through all lists
+        3rd - add event click to array of list [i]
+        4th - with object event(e) we get to which item is clicked
+        5th - e.target property targets item that is clicked
+        6th - innerHTML property reads text of item that is clicked(chosen)
+      
+      var items = document.getElementsByTagName("li");
+
+      for (let i = 0; i < items.length; i++) {
+        items[i].addEventListener("click", function (e) {
+          alert(e.target.innerHTML);
+        });
+      }
+      */
     </script>
+    <!-- Example when button is under script 
+    <button id="the-button">Click me</button>
+    -->
   </body>
 </html>
