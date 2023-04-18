@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM Events</title>
     <style>
-      /* Mouse event example */
+      /* Mouse event example 
       #my-div {
         height: 300px;
         background-color: blueviolet;
@@ -14,6 +14,32 @@
         text-align: center;
         color: white;
         line-height: 300px;
+      }
+      */
+
+      /* propagation of elements */
+      #div1 {
+        width: 400px;
+        height: 400px;
+        background-color: #abd486;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #div2 {
+        width: 300px;
+        height: 300px;
+        background-color: #5dc2b0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #div3 {
+        width: 200px;
+        height: 200px;
+        background-color: #f06270;
       }
     </style>
   </head>
@@ -33,6 +59,17 @@
       <li>Items 3</li>
     </ul>
     -->
+
+    <!-- remove event like regular browser event (exp. a link element) 
+    <a href="http://www.link-group.eu/" id="the-link">Link Group</a>
+    -->
+
+    <!-- propagation of elements -->
+    <div id="div1">
+      <div id="div2">
+        <div id="div3"></div>
+      </div>
+    </div>
     <script>
       /* 1st video
       var button = document.getElementById("the-button");
@@ -163,6 +200,41 @@
         });
       }
       */
+
+      /* remove event like regular browser event (exp. a link element) 
+        preventDefault is special method of events (it will be used a lot on links and forms if data is not valid)
+      
+      var link = document.getElementById("the-link");
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+      });
+      */
+
+      /* propagation of elements */
+      /* JS events go through 2 stages after activation on certain element and those are capturing and bubling
+      - capturing goes through elements from top parent to bottom child 
+      - bubling goes back from last element(child) to parent
+      - in this case capturing goes div1 div2 div3 then bubling goes div3 div2 div1
+      - all events in JS are processed(catched) in bubling phase 
+      - in console in this case will capture all 3 elements(divs) at the end of process so when div 3 box is clicked function returns all 3 divs*/
+      var div1 = document.getElementById("div1");
+      var div2 = document.getElementById("div2");
+      var div3 = document.getElementById("div3");
+
+      /*
+      - 3rd parameter of addEventListener is related to phase in which event will be caught (implied value is false)
+      - when false is changed with true it catches event in capturing phase so bubling phase never happens   
+      */
+      div1.addEventListener("click", eventHandler, true);
+      div2.addEventListener("click", eventHandler, true);
+      div3.addEventListener("click", eventHandler, true);
+
+      // - if propagation needs to be stopped e.stopPropagation() can be used
+      // - in this case when div3 is clicked only div1 text will be shown in console bcs this.id is refered to div1 or 1st element in code that is called and function is set to stop propagating after that event is called
+      function eventHandler(e) {
+        console.log("Hello from" + this.id);
+        e.stopPropagation();
+      }
     </script>
     <!-- Example when button is under script 
     <button id="the-button">Click me</button>
