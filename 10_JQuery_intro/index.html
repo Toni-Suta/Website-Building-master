@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Introduction</title>
+    <style>
+      input[type-text],
+      input[type-email],
+      select,
+      textarea {
+        width: 100%;
+      }
+
+      form > div {
+        margin: 16px 0 16px 0;
+      }
+
+      form > div > label {
+        font-weight: bold;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="subscribe-form">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" />
+      </div>
+
+      <div>
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email" />
+      </div>
+
+      <button type="submit">Subscribe</button>
+    </form>
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script>
+      /*
+      let subscribeForm = document.getElementById("subscribe-form");
+
+      subscribeForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        let nameInput = document.getElementById("name");
+        let emailInput = document.getElementById("email");
+
+        alert("Name: " + nameInput.value + "\n" + "Email: " + emailInput.value);
+      });
+      */
+
+      /* 
+        1st $("#subscribe-form") replaces doc.getElById and calls out subscribe-form element with css # rule
+        2nd .submit(function (e) {} replaces addEveListener event method and adds function event
+        3rd $("#name").val() replaces doc.getElById of name and after dot(.) adds value() to input that user will put(write) into it - same for email
+        4th e.preventDefault() prevents further default behavior of forms that browser does (in this case input that is written in input elements will stay there after clicking ok on alert window)
+      */
+      $("#subscribe-form").submit(function (e) {
+        e.preventDefault();
+
+        alert(
+          "Name: " + $("#name").val() + "\n" + "Email: " + $("#email").val()
+        );
+      });
+    </script>
+  </body>
+</html>
