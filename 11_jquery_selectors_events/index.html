@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery Selectors and Events</title>
+  </head>
+  <body>
+    <!-- 
+    <h1 id="heading-1">This is heading 1</h1> 
+    -->
+
+    <!-- 
+    <p class="my-class my-other-class">Paragraph 1</p>
+    <p class="my-class">Paragraph 2</p>
+    <p>Paragraph 3</p> 
+    -->
+
+    <section id="section1">
+      <h1 id="heading1">This is heading 1</h1>
+      <p class="my-class">Paragraph 1</p>
+      <p class="my-class">Paragraph 2</p>
+      <p>Paragraph 3</p>
+      <ul id="my-list">
+        <li>one</li>
+        <li>two</li>
+        <li>three</li>
+      </ul>
+    </section>
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script>
+      /*  
+      - selecting only heading - let heading = $("heading-1");
+      - selectiong only paragraph - let heading = $("p");
+      - selecting elements by class - let heading = $(".my-class");
+      - all class selectors from css can be used in JQuery brackets ("*");("p:first"); etc..
+       console.log(heading.text());
+        */
+
+      // This example is showing parent attribute of 1st child of ul element so li one is 1st child and attribute of parent(ul) of that li emelent is my-list
+      let elem = jQuery("li:first-child").parent();
+      console.log(elem.attr("id"));
+    </script>
+  </body>
+</html>
