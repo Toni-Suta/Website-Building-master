@@ -6,16 +6,17 @@
     <title>JQuery Selectors and Events</title>
   </head>
   <body>
-    <!-- 
+    <!-- 1
     <h1 id="heading-1">This is heading 1</h1> 
     -->
 
-    <!-- 
+    <!-- 2
     <p class="my-class my-other-class">Paragraph 1</p>
     <p class="my-class">Paragraph 2</p>
     <p>Paragraph 3</p> 
     -->
 
+    <!-- 3
     <section id="section1">
       <h1 id="heading1">This is heading 1</h1>
       <p class="my-class">Paragraph 1</p>
@@ -27,9 +28,13 @@
         <li>three</li>
       </ul>
     </section>
+     -->
+
+    <!-- 4 -->
+    <button id="my-button">Click me!</button>
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script>
-      /*  
+      /* 1/2
       - selecting only heading - let heading = $("heading-1");
       - selectiong only paragraph - let heading = $("p");
       - selecting elements by class - let heading = $(".my-class");
@@ -37,9 +42,110 @@
        console.log(heading.text());
         */
 
-      // This example is showing parent attribute of 1st child of ul element so li one is 1st child and attribute of parent(ul) of that li emelent is my-list
+      /* 3
+      This example is showing parent attribute of 1st child of ul element so li one is 1st child and attribute(class) of parent(ul) of that li emelent is my-list
+
       let elem = jQuery("li:first-child").parent();
       console.log(elem.attr("id"));
+      */
+      /*
+      parents() function will show every parent element
+      1st each() function goes through array of selected element
+      2nd to each function we add anonimus function that will foward every element
+      3rd $(this) will access every individual element - this is JS Object
+      4th $ before this enables usage of JQuery method .prop
+      5th - .prop reads specific DOM property nodeName
+      -- this function shows every parent of li:first-child UL/SECTION/BODY/HTML
+
+      let elements = jQuery("li:first-child").parents();
+      elements.each(function () {
+        console.log($(this).prop("nodeName"));
+        // pure JS - console.log(this.nodeName);
+      });
+      */
+
+      /*
+      - parentsUntil gets all elements until named element in this case body (c.log = UL/SECTION)
+      let elements = jQuery("li:first-child").parentsUntil("body");
+      */
+
+      /* childred search
+      - function goes through all elements of section1 element and shows them in console
+
+      let elements = $("#section1").children();
+      // children("p") selects only p elements
+      elements.each(function () {
+        console.log(this.nodeName);
+      });
+      */
+
+      /* search for all descendants .find
+       - .find method takes one parameter and it searches for that element in this case in section1 element
+       let elements = $("#section1").find("*");
+       - .find("*") takes all elements from section element
+       - ("li") only li elements etc
+      */
+
+      /* Select siblings of element
+      let elements = $("#heading1").siblings();
+
+      - .siblings method takes all siblings of element with id #my-list basically it means that it searches for all elements that are related to specific element but are not parents
+      - let elements = $("#heading1").next();
+      -.next method selects 1st next element after selected element #heading1 > p
+      - let elements = $("#heading1").nextAll();
+      selects all elements after seleceted element
+      -let elements = $("#heading1").nextUntil("ul");
+      selects all elements until it comes to ul elements
+
+      - .prev/.prevUntil/.prevAll does the same thing but backwards
+
+      elements.each(function () {
+      console.log(this.nodeName);
+      });
+      */
+
+      /* JQuery has method that can "filter" elements
+
+      - this method selects only 1st child of section1 element
+      let elements = $("#section1").children().first();
+
+      - .last() selects last element
+      - .eq("1") takes index from searched element and selects specific element from chosen element
+
+      elements.each(function () {
+      console.log(this.nodeName);
+
+      - .filter("p") selects only p elements
+      - .not("p") selects all elements that are not p elements
+
+      elements.each(function () {
+      console.log($(this).text());
+
+      - .eq("1") takes index from searched element
+      */
+
+      /* 4
+      JQuery Functionalities
+      -provide processing of events easier activation of logic that will activate when event happens
+
+
+      */
+
+      /*
+      1st $("#my-button") gets element by id
+      2nd adds .click event to element
+      3rd adds function to .click event with alert function
+      */
+      $("#my-button").click(function () {
+        alert("The element was clicked!");
+      });
+
+      /* Original JS Code
+      let myButton = document.getElementById("my-button");
+      myButton.addEventListener("click", function () {
+        alert("The element was clicked!");
+      });
+      */
     </script>
   </body>
 </html>
