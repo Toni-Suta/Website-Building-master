@@ -30,8 +30,9 @@
     </section>
      -->
 
-    <!-- 4 -->
+    <!-- 4 
     <button id="my-button">Click me!</button>
+    -->
     <script src="../js/jquery-3.6.4.min.js"></script>
     <script>
       /* 1/2
@@ -135,17 +136,64 @@
       1st $("#my-button") gets element by id
       2nd adds .click event to element
       3rd adds function to .click event with alert function
-      */
+
       $("#my-button").click(function () {
         alert("The element was clicked!");
       });
 
-      /* Original JS Code
+       Original JS Code
       let myButton = document.getElementById("my-button");
       myButton.addEventListener("click", function () {
         alert("The element was clicked!");
       });
       */
+
+      /* 5 example where whole DOM structure firstly loads then it is subscribed on chosen element
+      1st event listener was added with ready event
+      2nd function for that event is added
+      3rd my-button id is called with click event
+      4th function is created with alert for button when it is clicked
+
+      $(document).ready(function () {
+        $("my-button").click(function () {
+          alert("The element was clicked!");
+        });
+      });
+      */
+
+      /*
+      $(document).ready(function () {
+        $("my-button").on("click", function () {
+          alert("The element was clicked!");
+          $(this).off();
+          // .off method stops event from processing more then once
+          // same action can be made by putting method .one instead of .on
+        });
+      });
+
+       // method .on can take more then one event 
+       // with method .on 3 events were subscribed on the same element
+        $("my-button").on("click", function () {
+        $("my-button").on({
+          mouseenter: function () {
+            console.log("Mouse entered button");
+          },
+          mouseleave: function () {
+            console.log("Mouse left button");
+          },
+          click: function () {
+            console.log("Button clicked");
+          },
+        });
+      */
     </script>
+    <!-- 5 
+    <button
+      id="my-button
+    "
+    >
+      Click me!
+    </button>
+    -->
   </body>
 </html>
