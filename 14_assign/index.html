@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assignment 2 - Website Building</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      #login-container {
+        width: 460px;
+        margin: 0 auto;
+      }
+
+      form label,
+      form input {
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      form input {
+        padding: 8px;
+      }
+
+      form label {
+        font-weight: bold;
+      }
+
+      form div {
+        margin: 16px 0px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="login-container">
+      <form>
+        <div>
+          <label for="username">Username:</label>
+          <input id="username" type="text" />
+        </div>
+
+        <div>
+          <label for="password">Password:</label>
+          <input id="password" type="password" />
+        </div>
+
+        <input type="submit" value="Login" />
+      </form>
+    </div>
+
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("form").submit(function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          var username = $("#username").val();
+          var password = $("#password").val();
+          var errors = [];
+
+          // Check if username is empty or invalid
+          if (username === "") {
+            errors.push("Please enter username");
+            $("#username").addClass("invalid-input");
+          } else if (username !== "new_user") {
+            errors.push("Please enter valid username");
+            $("#username").addClass("invalid-input");
+          } else {
+            $("#username").addClass("valid-input");
+          }
+
+          // Check if password is empty or invalid
+          if (password === "") {
+            errors.push("Please enter password");
+            $("#password").addClass("invalid-input");
+          } else if (password !== "123456789") {
+            errors.push("Please enter valid password");
+            $("#password").addClass("invalid-input");
+          } else {
+            $("#password").addClass("valid-input");
+          }
+
+          // Remove previous error and success messages
+          $(".error-message").remove();
+          $(".success-message").remove();
+
+          // Display errors or success message
+          if (errors.length > 0) {
+            var errorMessage = "<p>";
+            errors.forEach(function (error) {
+              errorMessage += "<p>" + error + "</p>";
+            });
+            errorMessage += "</p>";
+            $("#login-container").append(
+              "<div class='error-message'>" + errorMessage + "</div>"
+            );
+          } else {
+            $("#login-container").append(
+              "<div class='success-message'>Successful login!</div>"
+            );
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
