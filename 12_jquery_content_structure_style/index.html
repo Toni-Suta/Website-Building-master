@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JQuery - Content, Structure and Style manipulation</title>
+    <style>
+      /* 4 */
+      .shown {
+        display: block;
+      }
+
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 1 -->
+    <h1 id="heading1">This is heading 1</h1>
+
+    <!-- 2 -->
+    <ul id="my-list">
+      <li>one</li>
+      <li>two</li>
+      <li>three</li>
+    </ul>
+
+    <!-- 3 -->
+    <form id="my-form">
+      <input type="text" name="name" id="name" />
+      <input id="male" type="radio" name="gender" value="male" />
+      <label for="male" checked>Male</label>
+      <input id="female" type="radio" name="gender" value="female" />
+      <label for="female">Female</label>
+      <input type="submit" value="Submit" />
+      <input type="checkbox" name="newsletter" value="yes" id="newsletter" />
+      <label for="newsletter">I would like to receive newsletter.</label>
+
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- 4 -->
+    <button id="my-button1">Show/Hide</button>
+
+    <p id="my-paragraph">
+      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam sunt
+      eligendi exercitationem nobis perferendis, quos quaerat, reprehenderit est
+      quibusdam, et consequuntur quasi labore eius natus! Tenetur voluptatem
+      libero odit molestiae.
+    </p>
+
+    <!-- 5 -->
+    <p id="my-paragraph1">This is original HTML paragraph!</p>
+    <p id="my-paragraph2">This is another original HTML paragraph!</p>
+    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script>
+      /* 1
+            - content(text) of heading1 element was selected and shown in console with .text
+
+              let h1Text = $("#heading1").text();
+              console.log(h1Text);
+              */
+
+      /* 2
+            - whole structure of element is shown in console with .html
+
+            let ulText = $("#my-list").html();
+            console.log(ulText);
+            */
+
+      /* 1
+            - .text shows span as content of h1 element in console
+            - .html take stylization and changes content of element
+
+            let h1Text = $("#heading1").html(
+              "This is <span style='color:red;'>new</span> heading text."
+            );
+            */
+
+      /* 3 inputs
+            // - with this value of input element is defined in code and event is called outside of function
+            $("#name").val("default.value");
+
+            // - with this user of browser inputs value(text) and function sumbits it to console
+            $("#my-form").submit(function (e) {
+              e.preventDefault();
+
+              let nameValue = $("#name").val();
+
+              // - with this line input is selected with name gender and pseudoclass checked is selected so value of selected type of "radio" item is shown in console
+              let selectedGender = $("input[name=gender]:checked").val();
+
+              // - with this line special JQuery funtion .is() is used to determine is "radio" item of newsletter input element checked or not(funtion returns boolean value true or false) .is() takes in parameter (condition) pseudoclass ":checked"
+              let newsletterChecked = $("#newsletter").is("checked");
+
+              console.log(nameValue);
+              console.log(selectedGender);
+              console.log(newsletterChecked);
+            });
+            */
+
+      /* 1 STYLIZATION HANDLING
+            Reading CSS properties
+            - takes in parameter(property) that we want to read/call
+
+            let textSize = $("#heading1").css("font-size");
+            // -inline style - let textSize = $("#heading1").css("font-size", "64px");
+            console.log("h1 text size is: " + textSize); // h1 = 32px = 16px*2em browser automatic size
+            */
+
+      /* 4 stylization of classes
+            // stylization for elements is above in style section. .hidden/.shown classes with display property
+
+            // 3 examples
+            // 1ST exp using if/else statement
+
+            // 1st to p element is added class "shown"  with method .addClass
+              2nd to "#my-button" element logic is added that when its clicked if/else function will activate
+              3rd condition is added with .hasClass method(checks if element has that class)
+              4th if/else statement is added for 2 cases with .removeClass(removes class from element) and addClass
+
+            let myParagraph = $("#my-paragraph");
+
+            myParagraph.addClass("shown");
+
+            $("#my-button1").click(function () {
+              if (myParagraph.hasClass("shown")) {
+                myParagraph.removeClass("shown");
+                myParagraph.addClass("hidden");
+              } else {
+                myParagraph.addClass("shown");
+                myParagraph.removeClass("hidden");
+              }
+            });
+            */
+
+      /* 2ND exp - 4 stylization with toggleClass()
+            let myParagraph = $("#my-paragraph");
+
+            // in this case toggleClass is changing classes .hidden and .shown on click doing the same thing as example above
+            $("my-button").click(function () {
+              myParagraph.toggleClass("hidden");
+            });
+            */
+
+      /* 3RD exp  Methods .show()/.hide() 
+      let myParagraph = $("#my-paragraph");
+
+      // in this case assigned value none is changing for display property with if/else statement and methods .show()/.hide()
+      $("#my-button1").click(function () {
+        if (myParagraph.css("display") == "none") {
+          myParagraph.show();
+        } else {
+          myParagraph.hide();
+        }
+      });
+      */
+
+      /* Simplest way to change between 2 styles
+          METHOD toggle() 
+          alternately changes visibility of chosen element. If its show toggle() hides it and the other way around 
+          
+      let myParagraph = $("#my-paragraph");
+
+      $("#my-button1").click(function () {
+        myParagraph.toggle();
+      });
+      */
+
+      /* 5
+       Handling nodes of DOM structure 
+      // dynamic DOM structure - creating, removing and changing existing JQuery libraries 
+      
+      // method .append() adds content to the end of existing content in element
+      $("#my-paragraph1").append("*new text");
+      
+
+      // this paragraph is created internally and positioned in variable newParagraph
+      let newParagraph = $("<p>This is dynamically created paragraph!</p>");
+
+      // place where paragraph will be created is body with .append to the end of body elem.
+      // .prepend to position newly created content(p) to beginning of element(body)
+      $("body").append(newParagraph);
+      
+
+      // to position content(p) to specific place in code .after() and .before() is used
+
+      let newParagraph = $("<p>This is dynamically created paragraph!</p>");
+
+      $("#my-paragraph1").after(newParagraph);
+
+      // remove element remove()
+      // remove content of an element empty()
+      $("#my-paragraph1").empty();
+      */
+    </script>
+  </body>
+</html>
