@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Assignment 2 - Website Building</title>
+
     <style>
       body {
         box-sizing: border-box;
@@ -23,6 +24,8 @@
 
       form input {
         padding: 8px;
+        border: 2px solid #ccc;
+        transition: border-color 0.3s ease;
       }
 
       form label {
@@ -31,6 +34,29 @@
 
       form div {
         margin: 16px 0px;
+        position: relative;
+      }
+
+      .check-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        color: rgb(26, 194, 26);
+      }
+
+      .x-icon {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        color: red;
+      }
+
+      .valid-input {
+        border-color: rgb(26, 194, 26);
+      }
+
+      .invalid-input {
+        border-color: red;
       }
     </style>
   </head>
@@ -41,52 +67,73 @@
         <div>
           <label for="username">Username:</label>
           <input id="username" type="text" />
+          <i class="fas fa-check check-icon"></i>
         </div>
 
         <div>
           <label for="password">Password:</label>
           <input id="password" type="password" />
+          <i class="fas fa-times x-icon"></i>
         </div>
 
         <input type="submit" value="Login" />
       </form>
     </div>
 
-    <script src="../js/jquery-3.6.4.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/75ae17ea6c.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-      $(document).ready(function () {
-        $("form").submit(function (event) {
+      document.addEventListener("DOMContentLoaded", function () {
+        var form = document.querySelector("form");
+
+        form.addEventListener("submit", function (event) {
           event.preventDefault(); // Prevent form submission
 
-          var username = $("#username").val();
-          var password = $("#password").val();
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
           var errors = [];
 
           // Check if username is empty or invalid
           if (username === "") {
             errors.push("Please enter username");
-            $("#username").addClass("invalid-input");
+            document.getElementById("username").classList.add("invalid-input");
           } else if (username !== "new_user") {
             errors.push("Please enter valid username");
-            $("#username").addClass("invalid-input");
+            document.getElementById("username").classList.add("invalid-input");
           } else {
-            $("#username").addClass("valid-input");
+            document
+              .getElementById("username")
+              .classList.remove("invalid-input");
+            document.getElementById("username").classList.add("valid-input");
           }
 
           // Check if password is empty or invalid
           if (password === "") {
             errors.push("Please enter password");
-            $("#password").addClass("invalid-input");
+            document.getElementById("password").classList.add("invalid-input");
           } else if (password !== "123456789") {
             errors.push("Please enter valid password");
-            $("#password").addClass("invalid-input");
+            document.getElementById("password").classList.add("invalid-input");
           } else {
-            $("#password").addClass("valid-input");
+            document
+              .getElementById("password")
+              .classList.remove("invalid-input");
+            document.getElementById("password").classList.add("valid-input");
           }
 
           // Remove previous error and success messages
-          $(".error-message").remove();
-          $(".success-message").remove();
+          var errorMessages = document.getElementsByClassName("error-message");
+          for (var i = 0; i < errorMessages.length; i++) {
+            errorMessages[i].remove();
+          }
+
+          var successMessage =
+            document.getElementsByClassName("success-message");
+          for (var i = 0; i < successMessage.length; i++) {
+            successMessage[i].remove();
+          }
 
           // Display errors or success message
           if (errors.length > 0) {
@@ -95,14 +142,43 @@
               errorMessage += "<p>" + error + "</p>";
             });
             errorMessage += "</p>";
-            $("#login-container").append(
-              "<div class='error-message'>" + errorMessage + "</div>"
-            );
+
+            var errorDiv = document.createElement("div");
+            errorDiv.classList.add("error-message");
+            errorDiv.innerHTML = errorMessage;
+            document.getElementById("login-container").appendChild(errorDiv);
           } else {
-            $("#login-container").append(
-              "<div class='success-message'>Successful login!</div>"
-            );
+            var successDiv = document.createElement("div");
+            successDiv.classList.add("success-message");
+            successDiv.textContent = "Successful login!";
+            document.getElementById("login-container").appendChild(successDiv);
           }
+        });
+
+        var inputs = document.querySelectorAll("input");
+
+        inputs.forEach(function (input) {
+          input.addEventListener("input", function () {
+            // Hide all icons
+            var icons = document.querySelectorAll(".input-icon");
+            icons.forEach(function (icon) {
+              icon.style.display = "none";
+            });
+
+            var parentDiv = this.parentNode;
+            var inputValue = this.value;
+
+            // Check input validity and show the respective icon
+            if (inputValue !== "") {
+              if (parentDiv.classList.contains("valid-input")) {
+                parentDiv.querySelector(".fa-check").style.display =
+                  "inline-block";
+              } else {
+                parentDiv.querySelector(".fa-times").style.display =
+                  "inline-block";
+              }
+            }
+          });
         });
       });
     </script>
