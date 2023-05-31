@@ -58,6 +58,10 @@
       .invalid-input {
         border-color: red;
       }
+
+      .hidden {
+        display: none !important;
+      }
     </style>
   </head>
 
@@ -67,15 +71,21 @@
         <div>
           <label for="username">Username:</label>
           <input id="username" type="text" />
-          <i class="fas fa-check check-icon"></i>
-          <i class="fas fa-times x-icon"></i>
+          <i
+            id="username__check-icon"
+            class="fas fa-check check-icon hidden"
+          ></i>
+          <i id="username__x-icon" class="fas fa-times x-icon hidden"></i>
         </div>
 
         <div>
           <label for="password">Password:</label>
           <input id="password" type="password" />
-          <i class="fas fa-check check-icon"></i>
-          <i class="fas fa-times x-icon"></i>
+          <i
+            id="password__check-icon"
+            class="fas fa-check check-icon hidden"
+          ></i>
+          <i id="password__x-icon" class="fas fa-times x-icon hidden"></i>
         </div>
 
         <input type="submit" value="Login" />
@@ -101,9 +111,15 @@
           if (username === "") {
             errors.push("Please enter a username");
             document.getElementById("username").classList.add("invalid-input");
+            document
+              .getElementById("username__x-icon")
+              .classList.remove("hidden");
           } else if (username !== "new_user") {
             errors.push("Please enter a valid username");
             document.getElementById("username").classList.add("invalid-input");
+            document
+              .getElementById("username__x-icon")
+              .classList.remove("hidden");
           } else {
             document
               .getElementById("username")
@@ -139,11 +155,10 @@
 
           // Display errors or success message
           if (errors.length > 0) {
-            var errorMessage = "<p>";
+            var errorMessage = "";
             errors.forEach(function (error) {
               errorMessage += "<p>" + error + "</p>";
             });
-            errorMessage += "</p>";
 
             var errorDiv = document.createElement("div");
             errorDiv.classList.add("error-message");
