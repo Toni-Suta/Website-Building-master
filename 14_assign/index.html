@@ -111,15 +111,9 @@
           if (username === "") {
             errors.push("Please enter a username");
             document.getElementById("username").classList.add("invalid-input");
-            document
-              .getElementById("username__x-icon")
-              .classList.add("invalid-input");
           } else if (username !== "new_user") {
             errors.push("Please enter a valid username");
             document.getElementById("username").classList.add("invalid-input");
-            document
-              .getElementById("username__x-icon")
-              .classList.add("invalid-input");
           } else {
             document
               .getElementById("username")
