@@ -103,6 +103,15 @@
         form.addEventListener("submit", function (event) {
           event.preventDefault(); // Prevent form submission
 
+          document
+            .getElementById("username__check-icon")
+            .classList.add("hidden");
+          document.getElementById("username__x-icon").classList.add("hidden");
+          document
+            .getElementById("password__check-icon")
+            .classList.add("hidden");
+          document.getElementById("password__x-icon").classList.add("hidden");
+
           var username = document.getElementById("username").value;
           var password = document.getElementById("password").value;
           var errors = [];
@@ -111,9 +120,15 @@
           if (username === "") {
             errors.push("Please enter a username");
             document.getElementById("username").classList.add("invalid-input");
+            document
+              .getElementById("username__x-icon")
+              .classList.remove("hidden");
           } else if (username !== "new_user") {
             errors.push("Please enter a valid username");
             document.getElementById("username").classList.add("invalid-input");
+            document
+              .getElementById("username__x-icon")
+              .classList.remove("hidden");
           } else {
             document
               .getElementById("username")
@@ -121,7 +136,7 @@
             document.getElementById("username").classList.add("valid-input");
             document
               .getElementById("username__check-icon")
-              .classList.add("valid-input");
+              .classList.remove("hidden");
           }
 
           // Check if password is empty or invalid
@@ -130,13 +145,13 @@
             document.getElementById("password").classList.add("invalid-input");
             document
               .getElementById("password__x-icon")
-              .classList.add("invalid-input");
+              .classList.remove("hidden");
           } else if (password !== "123456789") {
             errors.push("Please enter a valid password");
             document.getElementById("password").classList.add("invalid-input");
             document
               .getElementById("password__x-icon")
-              .classList.add("invalid-input");
+              .classList.remove("hidden");
           } else {
             document
               .getElementById("password")
@@ -144,7 +159,7 @@
             document.getElementById("password").classList.add("valid-input");
             document
               .getElementById("password__check-icon")
-              .classList.add("valid-input");
+              .classList.remove("hidden");
           }
 
           // Remove previous error and success messages
