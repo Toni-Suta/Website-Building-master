@@ -100,17 +100,49 @@
       document.addEventListener("DOMContentLoaded", function () {
         var form = document.querySelector("form");
 
-        form.addEventListener("submit", function (event) {
-          event.preventDefault(); // Prevent form submission
+        function toggleUsernameCheckIcon(isDisplayed) {
+          if (isDisplayed) {
+            document
+              .getElementById("username__check-icon")
+              .classList.add("hidden");
+            return;
+          }
+          if (
+            document
+              .getElementById("username__check-icon")
+              .classList.contains("hidden")
+          ) {
+            document
+              .getElementById("username__check-icon")
+              .classList.remove("hidden");
+          } else {
+            document
+              .getElementById("username__check-icon")
+              .classList.add("hidden");
+          }
+        }
 
-          document
-            .getElementById("username__check-icon")
-            .classList.add("hidden");
+        function hideUsernameXIcon() {
           document.getElementById("username__x-icon").classList.add("hidden");
+        }
+
+        function hidePasswordXIcon() {
+          document.getElementById("password__x-icon").classList.add("hidden");
+        }
+
+        function hidePasswordCheckIcon() {
           document
             .getElementById("password__check-icon")
             .classList.add("hidden");
-          document.getElementById("password__x-icon").classList.add("hidden");
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          hidePasswordCheckIcon();
+          hidePasswordXIcon();
+          toggleUsernameCheckIcon(true);
+          hidePasswordXIcon();
 
           var username = document.getElementById("username").value;
           var password = document.getElementById("password").value;
@@ -134,9 +166,7 @@
               .getElementById("username")
               .classList.remove("invalid-input");
             document.getElementById("username").classList.add("valid-input");
-            document
-              .getElementById("username__check-icon")
-              .classList.remove("hidden");
+            toggleUsernameCheckIcon();
           }
 
           // Check if password is empty or invalid
